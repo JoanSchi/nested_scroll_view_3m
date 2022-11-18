@@ -23,6 +23,7 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final List<String> tabs = <String>['Tab 1', 'Tab 2'];
     return DefaultTabController(
       length: tabs.length, // This is the number of tabs.
@@ -42,8 +43,9 @@ class MyStatelessWidget extends StatelessWidget {
                 handle:
                     NestedScrollView3M.sliverOverlapAbsorberHandleFor(context),
                 sliver: SliverAppBar(
-                  title:
-                      const Text('Books'), // This is the title in the app bar.
+                  title: const Center(
+                      child:
+                          Text('Books')), // This is the title in the app bar.
                   pinned: true,
                   expandedHeight: 150.0,
                   // The "forceElevated" property causes the SliverAppBar to show
@@ -56,6 +58,7 @@ class MyStatelessWidget extends StatelessWidget {
                   // scroll views.
                   forceElevated: innerBoxIsScrolled,
                   bottom: TabBar(
+                    labelColor: theme.primaryColor,
                     // These are the widgets to put in each tab in the tab bar.
                     tabs: tabs.map((String name) => Tab(text: name)).toList(),
                   ),
